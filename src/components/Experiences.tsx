@@ -16,11 +16,11 @@ const timeline = [
     year: "2025",
     items: [
       {
-        title: "Intern Developer",
+        title: "Front-End Developer",
         place: "Sabih Software Solutions",
         period: "Summer 2025",
         description:
-          "Worked on a full-stack project over the summer, contributing to frontend and backend systems before moving on.",
+          "Worked on a client project over the summer, building and refining frontend interfaces, improving UX, and integrating APIs with the backend services.",
         active: false,
       },
       {

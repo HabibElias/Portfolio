@@ -3,6 +3,7 @@ import Contact from "../components/Contact";
 import Experiences from "../components/Experiences";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
+import TechStacks from "../components/TechStacks";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,9 @@ export default function HomePage() {
 
       {/* About Section */}
       <About />
+
+      {/* Tech Stack Section */}
+      <TechStacks />
 
       {/* Experience Section */}
       <Experiences />

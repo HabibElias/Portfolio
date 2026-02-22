@@ -1,4 +1,4 @@
-import { Github, Mail, ArrowDown } from "lucide-react";
+import { Github, Mail, ArrowDown, Download } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Hero = () => {
@@ -44,6 +44,21 @@ const Hero = () => {
             >
               <Github className="w-4 h-4 mr-2" />
               GitHub
+            </a>
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="rounded-full px-6"
+          >
+            <a
+              href="https://drive.google.com/uc?export=download&id=1BFWGirfkaTf_lp9O5ysOMzsbc1JkpCkG"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Download Resume
             </a>
           </Button>
         </div>

@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 
 type Project = {
   title: string;
@@ -6,6 +7,7 @@ type Project = {
   tech: string[];
   github: string;
   live: string | null;
+  stack: string;
 };
 
 const projects: Project[] = [
@@ -16,6 +18,7 @@ const projects: Project[] = [
     tech: ["Next.js", "Supabase"],
     github: "https://github.com/HabibElias",
     live: "https://digital-grad-book-2025.vercel.app/",
+    stack: "Next.js",
   },
   {
     title: "Anno Macchiato Management System",
@@ -24,6 +27,7 @@ const projects: Project[] = [
     tech: ["Vue.js", "Nuxt.js", "Drizzle"],
     github: "https://github.com/HabibElias/amcoffee-ms",
     live: "https://amcoffee-ms.vercel.app/",
+    stack: "Vue/Nuxt",
   },
   {
     title: "Beria Book & Customer Management",
@@ -32,6 +36,7 @@ const projects: Project[] = [
     tech: ["React.js", "Laravel (PHP)"],
     github: "https://github.com/HabibElias/Beria-cms",
     live: "https://berea-cms.vercel.app",
+    stack: "Laravel/PHP",
   },
   {
     title: "AASTU Choir GC Gallery",
@@ -39,6 +44,7 @@ const projects: Project[] = [
     tech: ["React.js", "TypeScript", "Firebase", "Tailwind"],
     github: "https://github.com/HabibElias/Aastu-Choir-Gc-Gallery",
     live: "https://aastugc2025.vercel.app/",
+    stack: "React.js",
   },
   {
     title: "Baseleal",
@@ -47,6 +53,7 @@ const projects: Project[] = [
     tech: ["Flutter", "Dart", "Firebase"],
     github: "https://github.com/HabibElias/Baseleal",
     live: null,
+    stack: "Flutter",
   },
   {
     title: "Sharon Children Services",
@@ -55,6 +62,7 @@ const projects: Project[] = [
     tech: ["React.js", "Flask"],
     github: "https://github.com/HabibElias/sharon",
     live: "https://sharon-children-service.vercel.app/",
+    stack: "React.js",
   },
   {
     title: "Student Internship Portal",
@@ -63,6 +71,7 @@ const projects: Project[] = [
     tech: ["React.js", "TypeScript", "PHP", "Tailwind"],
     github: "https://github.com/HabibElias/Student-Internship-Portal",
     live: null,
+    stack: "Laravel/PHP",
   },
   {
     title: "Amadoniyas Gem & Mineral World",
@@ -71,6 +80,7 @@ const projects: Project[] = [
     tech: ["Next.js", "Tailwind"],
     github: "https://github.com/HabibElias",
     live: "https://amadona.vercel.app",
+    stack: "Next.js",
   },
   {
     title: "FixList",
@@ -79,19 +89,64 @@ const projects: Project[] = [
     tech: ["React.js", "TypeScript", "Redux"],
     github: "https://github.com/HabibElias/FixList",
     live: "https://fixlist.vercel.app/",
+    stack: "React.js",
   },
 ];
 
+const stackFilters = [
+  "All",
+  "Next.js",
+  "React.js",
+  "Vue/Nuxt",
+  "Laravel/PHP",
+  "Flutter",
+];
+
 const Projects = () => {
+  const [activeStack, setActiveStack] = useState("All");
+  const visibleProjects =
+    activeStack === "All"
+      ? projects
+      : projects.filter((project) => project.stack === activeStack);
+
   return (
     <section id="projects" className="py-24 md:py-32">
       <div className="container mx-auto px-6 md:px-8 max-w-4xl">
-        <h2 className="text-sm font-medium tracking-widest uppercase text-muted-foreground mb-12">
-          Projects
-        </h2>
+        <div className="flex flex-col gap-6 mb-10">
+          <div className="flex items-end justify-between gap-6 flex-wrap">
+            <div>
+              <h2 className="text-sm font-medium tracking-widest uppercase text-muted-foreground">
+                Projects
+              </h2>
+              <p className="text-2xl md:text-3xl font-semibold tracking-tight mt-3">
+                Explore work by stack
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {stackFilters.map((stack) => (
+                <button
+                  key={stack}
+                  type="button"
+                  onClick={() => setActiveStack(stack)}
+                  aria-pressed={activeStack === stack}
+                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors duration-200 ${
+                    activeStack === stack
+                      ? "border-foreground bg-foreground text-background"
+                      : "border-border text-muted-foreground hover:text-foreground hover:border-foreground/30"
+                  }`}
+                >
+                  {stack}
+                </button>
+              ))}
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Showing {visibleProjects.length} projects for {activeStack === "All" ? "all stacks" : activeStack}. Some work is not listed due to deployment issues.
+          </p>
+        </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          {projects.map((project, i) => (
+          {visibleProjects.map((project, i) => (
             <a
               key={i}
               href={project.live || project.github}
@@ -109,6 +164,9 @@ const Projects = () => {
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-1.5">
+                <span className="text-xs text-foreground/80 bg-muted px-2 py-0.5 rounded-md">
+                  {project.stack}
+                </span>
                 {project.tech.map((t) => (
                   <span
                     key={t}
@@ -129,9 +187,12 @@ const Projects = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
           >
-            View all projects on GitHub
+            View more projects on GitHub
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
+          <p className="text-xs text-muted-foreground mt-3">
+            Some projects are not deployed right now, so GitHub has the full list.
+          </p>
         </div>
       </div>
     </section>
