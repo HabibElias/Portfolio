@@ -27,7 +27,6 @@ export default function Layout() {
     }
   }, [darkMode]);
 
-  // Smooth scroll to anchor on hash change
   useEffect(() => {
     if (location.hash) {
       const el = document.getElementById(location.hash.replace("#", ""));
@@ -40,135 +39,127 @@ export default function Layout() {
   const toggleDarkMode = () => setDarkMode((d) => !d);
 
   return (
-    <div
-      className="min-h-screen flex flex-col bg-gradient-to-br from-amber-50 mx-auto to-orange-100 dark:from-neutral-950 dark:to-neutral-900"
-      style={{
-        scrollBehavior: "smooth",
-        backgroundColor: darkMode ? "#0a0a0a" : undefined,
-      }}
-    >
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full flex items-center px-4 justify-center border-b border-amber-200 bg-amber-50/95 backdrop-blur supports-[backdrop-filter]:bg-amber-50/60 dark:border-neutral-800 dark:bg-neutral-950/90">
-        <div className="container flex h-14 items-center justify-center relative">
-          <div className="flex items-center absolute left-0">
-            <Link
-              className="mr-6 flex items-center space-x-2"
-              to="/"
-              onClick={() => {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-            >
-              <span className="font-bold">Habib Elias</span>
-            </Link>
-          </div>
+      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
+        <div className="container mx-auto flex h-16 items-center justify-between px-6 md:px-8">
+          <Link
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="text-lg font-semibold tracking-tight"
+          >
+            HE<span className="text-muted-foreground">.</span>
+          </Link>
+
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
-                className="transition-colors hover:text-foreground/80"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-          {/* Dark Mode Toggle */}
-          <div className="absolute right-12 flex items-center">
+
+          <div className="flex items-center gap-1">
             <Button
               variant="ghost"
               size="icon"
-              aria-label="Toggle dark mode"
+              aria-label="Toggle theme"
               onClick={toggleDarkMode}
+              className="rounded-full"
             >
               {darkMode ? (
-                <Sun className="w-5 h-5" />
+                <Sun className="w-4 h-4" />
               ) : (
-                <Moon className="w-5 h-5" />
+                <Moon className="w-4 h-4" />
               )}
             </Button>
-          </div>
-          {/* Mobile Menu Button */}
-          <div className="absolute right-0">
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="md:hidden rounded-full"
               onClick={() => setDrawerOpen(true)}
               aria-label="Open menu"
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5" />
             </Button>
           </div>
         </div>
       </header>
+
       {/* Mobile Drawer */}
       <div
-        className={`fixed inset-0 z-50 bg-black/40 flex transition-opacity duration-300 ${
+        className={`fixed inset-0 z-50 transition-opacity duration-300 ${
           drawerOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
-        aria-hidden={!drawerOpen}
       >
         <div
-          className={`bg-amber-50 dark:bg-neutral-950 w-64 h-full shadow-lg flex flex-col transform transition-transform duration-300 ${
-            drawerOpen ? "translate-x-0" : "-translate-x-full"
+          className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+          onClick={() => setDrawerOpen(false)}
+        />
+        <div
+          className={`absolute right-0 top-0 h-full w-72 bg-background border-l border-border shadow-xl transform transition-transform duration-300 ${
+            drawerOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex items-center justify-between p-4 border-b border-amber-200 dark:border-neutral-800">
-            <span className="font-bold">Menu</span>
+          <div className="flex items-center justify-between p-6">
+            <span className="text-sm font-medium text-muted-foreground uppercase tracking-widest">
+              Menu
+            </span>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setDrawerOpen(false)}
-              aria-label="Close menu"
+              className="rounded-full"
             >
-              <X className="w-6 h-6" />
+              <X className="w-4 h-4" />
             </Button>
           </div>
-          <nav className="flex flex-col gap-2 p-4">
+          <nav className="flex flex-col px-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
-                className="py-2 px-3 rounded hover:bg-amber-100 dark:hover:bg-neutral-800 transition-colors font-medium"
+                className="py-4 text-lg font-light border-b border-border/40 hover:text-foreground text-muted-foreground transition-colors"
                 onClick={() => setDrawerOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            {/* Dark Mode Toggle in Drawer */}
             <Button
               variant="ghost"
               size="icon"
-              aria-label="Toggle dark mode"
-              className="mt-4 self-start"
+              aria-label="Toggle theme"
+              className="mt-6 self-start rounded-full"
               onClick={toggleDarkMode}
             >
               {darkMode ? (
-                <Sun className="w-5 h-5" />
+                <Sun className="w-4 h-4" />
               ) : (
-                <Moon className="w-5 h-5" />
+                <Moon className="w-4 h-4" />
               )}
             </Button>
           </nav>
         </div>
-        {/* Click outside to close */}
-        <div
-          className="flex-1"
-          onClick={() => setDrawerOpen(false)}
-          aria-label="Close menu"
-        />
       </div>
-      {/* Main Content */}
-      <main className="flex-1 px-10 bg-transparent">
+
+      {/* Main */}
+      <main className="flex-1">
         <Outlet />
       </main>
+
       {/* Footer */}
-      <footer className="border-t flex items-center justify-center border-amber-200 py-8 bg-amber-50/30 dark:border-neutral-800 dark:bg-neutral-950/30">
-        <div className="container text-center text-muted-foreground">
-          <p>&copy; 2024 Habib Elias. All rights reserved.</p>
+      <footer className="border-t border-border/40 py-8">
+        <div className="container mx-auto px-6 md:px-8 text-center">
+          <p className="text-sm text-muted-foreground">
+            &copy; {new Date().getFullYear()} Habib Elias
+          </p>
         </div>
       </footer>
     </div>
