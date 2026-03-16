@@ -10,9 +10,9 @@ const About = () => {
 
         <div className="space-y-6 max-w-3xl">
           <p className="text-lg leading-relaxed text-foreground/90">
-            I'm a full-stack developer currently interning at ArkHive, where I
-            build scalable web products and backend services. I enjoy turning
-            complex requirements into clean, reliable user experiences.
+            I'm a full-stack developer capable of building scalable web
+            products and backend services. I enjoy turning complex
+            requirements into clean, reliable user experiences.
           </p>
           <p className="text-lg leading-relaxed text-foreground/90">
             I focus on building practical products with modern frameworks,

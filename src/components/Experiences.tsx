@@ -16,14 +16,6 @@ const timeline = [
     year: "2025",
     items: [
       {
-        title: "Front-End Developer",
-        place: "Sabih Software Solutions",
-        period: "Summer 2025",
-        description:
-          "Worked on a client project over the summer, building and refining frontend interfaces, improving UX, and integrating APIs with the backend services.",
-        active: false,
-      },
-      {
         title: "ALX Professional Foundations",
         place: "ALX",
         period: "2nd Semester 2025",
