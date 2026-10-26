@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { projects } from "../data/projects";
 import ProjectBanner from "../components/ProjectBanner";
+import BrowserPreview from "../components/BrowserPreview";
 
 export default function CaseStudyPage() {
   const { slug } = useParams();
@@ -39,6 +40,16 @@ export default function CaseStudyPage() {
           ))}
         </dl>
         <ProjectBanner project={project} className="case-study-banner rounded-2xl" />
+        {!!project.screenshots?.slice(1).length && (
+          <section aria-label="Project screenshots" className="mt-12 space-y-8">
+            {project.screenshots.slice(1).map((screenshot) => (
+              <figure key={screenshot.src}>
+                <BrowserPreview screenshot={screenshot} hostname={new URL(project.href).hostname} />
+                <figcaption className="text-sm text-muted-foreground leading-relaxed mt-4">{screenshot.caption}</figcaption>
+              </figure>
+            ))}
+          </section>
+        )}
       </div>
 
       <div className="max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-24">

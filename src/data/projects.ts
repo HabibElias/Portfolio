@@ -1,3 +1,11 @@
+export type ProjectScreenshot = {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+};
+
 export type Project = {
   slug: string;
   number: string;
@@ -11,6 +19,7 @@ export type Project = {
   href: string;
   linkLabel: string;
   banner: "driving" | "graduation" | "baseleal";
+  screenshots?: ProjectScreenshot[];
   challenge: string;
   approach: string;
   capabilities: { title: string; description: string }[];
@@ -32,6 +41,15 @@ export const projects: Project[] = [
     href: "https://dms.arkhivetech.io/",
     linkLabel: "Visit platform",
     banner: "driving",
+    screenshots: [
+      {
+        src: "/images/projects/driving-school-home.png",
+        alt: "ArkHive driving school platform landing page with an operations dashboard preview",
+        caption: "The driving school platform’s landing page and dashboard preview.",
+        width: 2545,
+        height: 1362,
+      },
+    ],
     challenge:
       "Driving school operations span student records, instructor availability, lesson schedules, attendance, licensing, and examinations. The project’s goal was to bring these connected responsibilities into an in-house management platform.",
     approach:
@@ -58,6 +76,22 @@ export const projects: Project[] = [
     href: "https://digital-grad-book-2025.vercel.app/",
     linkLabel: "Explore graduation book",
     banner: "graduation",
+    screenshots: [
+      {
+        src: "/images/projects/graduation-book-home.png",
+        alt: "AASTU ECSF Class of 2025 graduation book landing page with A Legacy of Faith heading",
+        caption: "The Class of 2025 graduation book’s welcome page.",
+        width: 2555,
+        height: 1302,
+      },
+      {
+        src: "/images/projects/graduation-book-students.png",
+        alt: "Graduation book student directory showing graduate portraits, fields of study, and personal reflections",
+        caption: "Inside the book: graduate portraits, fields of study, and personal reflections, with search and field filters.",
+        width: 2557,
+        height: 1300,
+      },
+    ],
     challenge:
       "A graduation book needs to honor each student while making a whole graduating class easy to explore. The brief was to create an organized, accessible digital space for students’ journeys, achievements, and personal reflections.",
     approach:

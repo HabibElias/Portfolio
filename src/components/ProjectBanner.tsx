@@ -1,48 +1,25 @@
-import { ArrowRight, BookOpen, CalendarDays, GraduationCap, Music2, Users } from "lucide-react";
+import { Music2 } from "lucide-react";
 import type { Project } from "../data/projects";
+import BrowserPreview from "./BrowserPreview";
 
 type Props = { project: Project; className?: string };
 
 export default function ProjectBanner({ project, className = "" }: Props) {
+  const screenshot = project.screenshots?.[0];
+
   return (
-    <div className={`project-banner project-banner--${project.banner} ${className}`}>
+    <div className={`project-banner project-banner--${project.banner} ${screenshot ? "project-banner--screenshot" : ""} ${className}`}>
       <div className="banner-grid" aria-hidden="true" />
       <div className="banner-topline">
         <span>{project.category}</span>
         <span>{project.number} / Selected work</span>
       </div>
-      {project.banner === "driving" && (
-        <div className="driving-art">
-          <div className="banner-editorial">
-            <span className="banner-eyebrow">Operations, connected</span>
-            <p>From enrollment<br />to the open road.</p>
-          </div>
-          <div className="workflow-art" aria-label="Workflow overview: student management, scheduling, licensing and exams">
-            <span className="workflow-caption">Workflow overview</span>
-            <div><Users size={19} /><span>Students</span><ArrowRight size={16} /></div>
-            <div><CalendarDays size={19} /><span>Scheduling</span><ArrowRight size={16} /></div>
-            <div><GraduationCap size={19} /><span>Licensing & exams</span></div>
-          </div>
+      {screenshot && (
+        <div className="browser-preview-stage">
+          <BrowserPreview screenshot={screenshot} hostname={new URL(project.href).hostname} />
         </div>
       )}
-      {project.banner === "graduation" && (
-        <div className="graduation-art">
-          <div className="banner-editorial">
-            <span className="banner-eyebrow">AASTU Christian Fellowship</span>
-            <p>Every journey.<br />Worth remembering.</p>
-          </div>
-          <div className="book-art" aria-hidden="true">
-            <div className="book-cover">
-              <GraduationCap size={34} strokeWidth={1} />
-              <span>THE GRADUATION BOOK</span>
-              <strong>Class<br />of 2025.</strong>
-              <div className="book-rule" />
-              <span>Stories. Reflections. A new chapter.</span>
-            </div>
-          </div>
-        </div>
-      )}
-      {project.banner === "baseleal" && (
+      {!screenshot && project.banner === "baseleal" && (
         <div className="baseleal-art">
           <div className="banner-editorial">
             <Music2 size={28} strokeWidth={1.2} aria-hidden="true" />
@@ -56,7 +33,7 @@ export default function ProjectBanner({ project, className = "" }: Props) {
       )}
       <div className="banner-bottomline">
         <span>{project.tech.join(" / ")}</span>
-        {project.banner === "baseleal" ? <span>App preview</span> : <BookOpen size={16} aria-hidden="true" />}
+        <span>{screenshot ? "Website preview" : "App preview"}</span>
       </div>
     </div>
   );
