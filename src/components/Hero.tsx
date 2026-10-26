@@ -1,4 +1,4 @@
-import { Github, Mail, ArrowDown, Download } from "lucide-react";
+import { Github, ArrowDown, Download } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Hero = () => {
@@ -19,16 +19,16 @@ const Hero = () => {
             Habib Elias
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-lg mx-auto">
-            Full-stack developer building modern products with Next.js, Go &
-            AI.
+            Full Stack Developer building web products and backend services with
+            Next.js, Go, and practical AI integrations.
           </p>
         </div>
 
-        <div className="flex gap-3 pt-2">
+        <div className="flex flex-wrap justify-center gap-3 pt-2">
           <Button asChild size="lg" className="rounded-full px-6">
-            <a href="mailto:habibelias234@gmail.com">
-              <Mail className="w-4 h-4 mr-2" />
-              Get in Touch
+            <a href="#projects">
+              <ArrowDown className="w-4 h-4 mr-2" />
+              Explore My Work
             </a>
           </Button>
           <Button
@@ -53,12 +53,11 @@ const Hero = () => {
             className="rounded-full px-6"
           >
             <a
-              href="https://drive.google.com/uc?export=download&id=1BFWGirfkaTf_lp9O5ysOMzsbc1JkpCkG"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/Habib_Elias_Cv.pdf"
+              download="Habib_Elias_Cv.pdf"
             >
               <Download className="w-4 h-4 mr-2" />
-              Download Resume
+              Download CV
             </a>
           </Button>
         </div>

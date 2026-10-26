@@ -132,3 +132,85 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Case studies: editorial project covers and readable long-form content. */
+section[id] { scroll-margin-top: 6rem; }
+.case-card { border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; background: var(--card); }
+.case-card-visual { display: block; overflow: hidden; }
+.case-card-visual:focus-visible { outline: 3px solid var(--ring); outline-offset: -4px; }
+.case-card-copy { padding: 2rem; }
+.case-study-link { display: inline-flex; align-items: center; gap: .75rem; font-size: .875rem; font-weight: 500; padding-bottom: .5rem; border-bottom: 1px solid currentColor; width: fit-content; }
+.case-study-link svg { transition: transform .2s; }
+.case-study-link:hover svg { transform: translateX(4px); }
+.additional-project { display: block; padding: 1.75rem; border: 1px solid var(--border); border-radius: 1rem; transition: background .2s, border-color .2s; }
+.additional-project:hover { background: var(--muted); border-color: var(--muted-foreground); }
+.project-banner { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: space-between; min-height: 360px; overflow: hidden; padding: 1.5rem; color: #edf5f0; background: #163d34; }
+.banner-grid { position: absolute; inset: 0; z-index: -1; opacity: .1; background-image: linear-gradient(#fff5 1px,transparent 1px),linear-gradient(90deg,#fff5 1px,transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(120deg,transparent,black); }
+.banner-topline, .banner-bottomline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-size: .6rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; position: relative; z-index: 2; }
+.banner-topline { padding-bottom: 1rem; border-bottom: 1px solid #ffffff30; }
+.banner-bottomline { padding-top: 1rem; border-top: 1px solid #ffffff30; }
+.banner-editorial { position: relative; z-index: 1; }
+.banner-editorial p { font-size: clamp(1.65rem,2.3vw,2.1rem); font-weight: 500; line-height: 1.18; letter-spacing: -.045em; margin: .75rem 0; }
+.banner-eyebrow { font-size: .56rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; display: block; }
+.driving-art { display: flex; flex-direction: column; gap: 1.5rem; padding: 2rem 0; }
+.workflow-art { padding: 1.25rem; border: 1px solid #b9d8c860; border-radius: .75rem; background: #0e2c25; box-shadow: 0 20px 40px #061c2426; }
+.workflow-caption { font-size: .5rem; text-transform: uppercase; letter-spacing: .12em; color: #a0c4b6; display: block; margin-bottom: 1rem; }
+.workflow-art > div { display: flex; align-items: center; gap: .75rem; padding: .65rem 0; font-size: .75rem; border-bottom: 1px solid #ffffff1f; }
+.workflow-art > div:last-child { border: 0; }
+.workflow-art > div svg:first-child { color: #b7ddc6; }
+.workflow-art > div svg:last-child:not(:first-child) { margin-left: auto; }
+.project-banner--graduation { background: #eae3d5; color: #453a29; }
+.project-banner--graduation .banner-topline, .project-banner--graduation .banner-bottomline { border-color: #453a2930; }
+.project-banner--graduation .banner-grid { background-image: linear-gradient(#453a2940 1px,transparent 1px),linear-gradient(90deg,#453a2940 1px,transparent 1px); }
+.graduation-art { display: flex; align-items: center; gap: 1.5rem; padding: 2rem 0; min-height: 255px; }
+.graduation-art .banner-editorial { flex: 1; }
+.graduation-art .banner-editorial p { font-family: Georgia, serif; font-weight: 400; font-style: italic; }
+.book-art { width: 39%; max-width: 200px; transform: rotate(9deg); padding: 0 5px 4px 0; background: #c9bfae; border-radius: 2px 6px 6px 2px; box-shadow: 12px 15px 30px #57442926; }
+.book-cover { display: flex; flex-direction: column; align-items: start; gap: 1rem; padding: 1.2rem; background: #504837; color: #f2e7cc; border-radius: 2px 5px 5px 2px; border-left: 4px solid #6f644b; }
+.book-cover > span { font-size: .4rem; letter-spacing: .1em; line-height: 1.6; }
+.book-cover strong { font-family: Georgia,serif; font-size: 1.75rem; line-height: 1.05; font-weight: 400; }
+.book-rule { width: 100%; height: 1px; background: #f2e7cc60; }
+.project-banner--baseleal { background: #dedff1; color: #343350; }
+.project-banner--baseleal .banner-topline, .project-banner--baseleal .banner-bottomline { border-color: #34335030; }
+.baseleal-art { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 255px; padding: 1.5rem 0; }
+.baseleal-art .banner-editorial { max-width: 55%; }
+.phone-art { flex-shrink: 0; width: 36%; max-width: 155px; aspect-ratio: 1080 / 2400; border: 5px solid #242331; border-radius: 1.2rem; overflow: hidden; box-shadow: 12px 18px 25px #27263b26; transform: rotate(7deg); background: white; }
+.phone-art img { width: 100%; height: 100%; object-fit: cover; }
+.case-study-section { display: grid; grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0; border-top: 1px solid var(--border); }
+.case-study-section h2 { font-size: 1rem; font-weight: 500; }
+.case-study-section h2 > span { display: block; font-family: monospace; font-size: .7rem; color: var(--muted-foreground); margin-bottom: .75rem; }
+.case-study-section p { color: var(--muted-foreground); font-size: 1rem; line-height: 1.85; }
+.case-study-next { max-width: 22rem; }
+.case-study-next:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (min-width: 768px) {
+  .case-card--featured { display: grid; grid-template-columns: 1.1fr 1fr; }
+  .case-card--featured .project-banner { height: 100%; min-height: 460px; }
+  .case-card--featured .case-card-copy { display: flex; flex-direction: column; justify-content: center; padding: 3rem; }
+  .case-study-section { grid-template-columns: 1fr 2.2fr; gap: 4rem; padding: 3rem 0; }
+  .case-study-banner { min-height: 480px; padding: 2.5rem; }
+  .case-study-banner .banner-editorial p { font-size: 3.4rem; }
+  .case-study-banner .banner-eyebrow { font-size: .65rem; }
+  .case-study-banner .driving-art { flex-direction: row; align-items: center; justify-content: space-between; gap: 3rem; }
+  .case-study-banner .workflow-art { width: 38%; padding: 1.75rem; }
+  .case-study-banner .workflow-art > div { padding: 1rem 0; font-size: .85rem; }
+  .case-study-banner .graduation-art, .case-study-banner .baseleal-art { padding: 2.5rem 2rem; }
+  .case-study-banner .book-art { max-width: 220px; margin-right: 3rem; }
+  .case-study-banner .book-cover { padding: 1.75rem; }
+  .case-study-banner .book-cover strong { font-size: 2.5rem; }
+  .case-study-banner .phone-art { max-width: 190px; margin-right: 4rem; }
+}
+@media (max-width: 380px) {
+  .project-banner { padding: 1.1rem; }
+  .banner-topline, .banner-bottomline { font-size: .5rem; }
+  .banner-editorial p { font-size: 1.4rem; }
+  .banner-eyebrow { font-size: .45rem; }
+  .book-cover { padding: .75rem; gap: .6rem; }
+  .book-cover strong { font-size: 1.35rem; }
+  .case-card-copy { padding: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+.case-card:not(.case-card--featured) .project-banner { height: 420px; }
+.case-card .graduation-art, .case-card .baseleal-art { flex: 1; min-height: 0; padding: 1.5rem 0; }
+.case-card .phone-art { max-width: 130px; }

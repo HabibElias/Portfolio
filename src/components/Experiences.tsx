@@ -3,11 +3,11 @@ const timeline = [
     year: "2026",
     items: [
       {
-        title: "Full-Stack Developer Intern",
-        place: "ArkHive",
-        period: "Jan 2026 — Present",
+        title: "Full Stack Developer",
+        place: "ArkHive Software Solutions",
+        period: "2026 — Present",
         description:
-          "Building and shipping product features across frontend and backend using Next.js and Golang, with AI integrations as a core part of the workflow.",
+          "Developing web products and backend services with Next.js and Go, with a focus on practical AI integrations.",
         active: true,
       },
     ],
@@ -16,35 +16,35 @@ const timeline = [
     year: "2025",
     items: [
       {
-        title: "ALX Professional Foundations",
-        place: "ALX",
-        period: "2nd Semester 2025",
+        title: "Full Stack Developer Intern",
+        place: "ArkHive Software Solutions",
+        period: "September — December 2025",
         description:
-          "Completed the ALX Professional Foundation program alongside GDG, building professional and backend development fundamentals.",
-        active: false,
-      },
-      {
-        title: "React.js — Google Developers Group",
-        place: "GDG On Campus · AASTU",
-        period: "1st & 2nd Semester 2025",
-        description:
-          "Learned React.js through hands-on GDG sessions and mentorship. Built practical projects throughout the year.",
+          "Contributed to an in-house Driving School Management System using Next.js and Go (Fiber), covering student and instructor management, scheduling, attendance, licensing workflows, role-based access, and final examinations.",
         active: false,
       },
     ],
   },
+];
+
+const education = [
   {
-    year: "2022",
-    items: [
-      {
-        title: "Software Engineering",
-        place: "Addis Ababa Science and Technology University",
-        period: "2022 — Present",
-        description:
-          "Pursuing a Bachelor's degree in Software Engineering. All of the above happened while studying here — and it's been a fun ride.",
-        active: false,
-      },
-    ],
+    title: "BSc in Software Engineering",
+    place: "Addis Ababa Science and Technology University",
+    description:
+      "Coursework includes Data Structures and Algorithms, Internet Programming, System Design, Computer Networking, and Database Systems.",
+  },
+  {
+    title: "Professional Foundations",
+    place: "ALX · Online",
+    description:
+      "Training in communication, teamwork, problem-solving, and workplace ethics.",
+  },
+  {
+    title: "Frontend Development · React.js Track",
+    place: "Google Developers Group",
+    description:
+      "Hands-on React projects and collaborative learning, culminating in a hackathon to build real-world solutions under time constraints.",
   },
 ];
 
@@ -53,7 +53,7 @@ const Experiences = () => {
     <section id="experience" className="py-24 md:py-32 bg-muted/30">
       <div className="container mx-auto px-6 md:px-8 max-w-4xl">
         <h2 className="text-sm font-medium tracking-widest uppercase text-muted-foreground mb-12">
-          Experience
+          Professional Experience
         </h2>
 
         <div className="relative">
@@ -108,6 +108,23 @@ const Experiences = () => {
                     </div>
                   ))}
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-20">
+          <h2 className="text-sm font-medium tracking-widest uppercase text-muted-foreground mb-8">
+            Education & Training
+          </h2>
+          <div className="space-y-8">
+            {education.map((item) => (
+              <div key={item.title} className="border-l border-border pl-6 space-y-2">
+                <h3 className="text-sm font-medium">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.place}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>

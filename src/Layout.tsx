@@ -29,7 +29,9 @@ export default function Layout() {
   }, [darkMode]);
 
   useEffect(() => {
-    if (location.hash) {
+    if (!location.hash) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    } else {
       const el = document.getElementById(location.hash.replace("#", ""));
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -57,7 +59,7 @@ export default function Layout() {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                to={link.href}
+                to={`/${link.href}`}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 {link.label}
@@ -126,7 +128,7 @@ export default function Layout() {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                to={link.href}
+                to={`/${link.href}`}
                 className="py-4 text-lg font-light border-b border-border/40 hover:text-foreground text-muted-foreground transition-colors"
                 onClick={() => setDrawerOpen(false)}
               >

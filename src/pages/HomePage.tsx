@@ -14,14 +14,14 @@ export default function HomePage() {
       {/* About Section */}
       <About />
 
+      {/* Selected case studies */}
+      <Projects />
+
       {/* Tech Stack Section */}
       <TechStacks />
 
       {/* Experience Section */}
       <Experiences />
-
-      {/* Projects Section */}
-      <Projects />
 
       {/* Contact Section */}
       <Contact />

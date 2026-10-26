@@ -10,13 +10,16 @@ const About = () => {
 
         <div className="space-y-6 max-w-3xl">
           <p className="text-lg leading-relaxed text-foreground/90">
-            I'm a full-stack developer capable of building scalable web
-            products and backend services. I enjoy turning complex
-            requirements into clean, reliable user experiences.
+            I'm a Full Stack Developer at ArkHive Software Solutions in Addis
+            Ababa. I build web products and backend services with Next.js and
+            Go, turning complex requirements into clear, reliable user
+            experiences.
           </p>
           <p className="text-lg leading-relaxed text-foreground/90">
-            I focus on building practical products with modern frameworks,
-            clean UI, and thoughtful user flows.
+            I study Software Engineering at Addis Ababa Science and Technology
+            University. My work spans business management systems, community
+            platforms, and mobile applications, with a focus on practical
+            tools that make everyday tasks easier.
           </p>
           <div className="flex items-center gap-2 text-muted-foreground pt-2">
             <MapPin className="w-4 h-4" />
