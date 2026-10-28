@@ -10,13 +10,13 @@ const About = () => {
 
         <div className="space-y-6 max-w-3xl">
           <p className="text-lg leading-relaxed text-foreground/90">
-            I'm a Full Stack Developer at ArkHive Software Solutions in Addis
-            Ababa. I build web products and backend services with Next.js and
+            I'm a Full Stack Developer based in Addis Ababa. I build web
+            products and backend services with Next.js and
             Go, turning complex requirements into clear, reliable user
             experiences.
           </p>
           <p className="text-lg leading-relaxed text-foreground/90">
-            I study Software Engineering at Addis Ababa Science and Technology
+            I studied Software Engineering at Addis Ababa Science and Technology
             University. My work spans business management systems, community
             platforms, and mobile applications, with a focus on practical
             tools that make everyday tasks easier.
