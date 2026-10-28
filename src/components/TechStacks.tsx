@@ -5,11 +5,11 @@ const stacks = [
   },
   {
     title: "Backend",
-    items: ["Go", "Fiber", "Firebase"],
+    items: ["Go", "Fiber", "Laravel", "Firebase"],
   },
   {
     title: "Databases",
-    items: ["PostgreSQL", "MySQL"],
+    items: ["PostgreSQL", "MySQL", "SQLite"],
   },
   {
     title: "Version Control",
