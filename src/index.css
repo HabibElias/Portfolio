@@ -210,3 +210,10 @@ section[id] { scroll-margin-top: 6rem; }
 }
 
 .case-card .baseleal-art { flex: 1; min-height: 0; padding: 1.5rem 0; }
+
+.project-banner--board { padding: 0; min-height: 0; background: #062448; justify-content: center; }
+.project-banner--board img { display: block; width: 100%; height: auto; flex-shrink: 0; }
+.case-study-banner.project-banner--board { padding: 0; min-height: 0; }
+.presentation-board-link { display: block; border-radius: 1rem; overflow: hidden; }
+.presentation-board-link:focus-visible { outline: 3px solid var(--ring); outline-offset: 4px; }
+.presentation-board { display: block; width: 100%; height: auto; }

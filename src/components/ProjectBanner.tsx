@@ -7,6 +7,14 @@ type Props = { project: Project; className?: string };
 export default function ProjectBanner({ project, className = "" }: Props) {
   const screenshot = project.screenshots?.[0];
 
+  if (screenshot?.kind === "board") {
+    return (
+      <div className={`project-banner project-banner--board ${className}`}>
+        <img src={screenshot.src} alt={screenshot.alt} width={screenshot.width} height={screenshot.height} loading="lazy" decoding="async" />
+      </div>
+    );
+  }
+
   return (
     <div className={`project-banner project-banner--${project.banner} ${screenshot ? "project-banner--screenshot" : ""} ${className}`}>
       <div className="banner-grid" aria-hidden="true" />

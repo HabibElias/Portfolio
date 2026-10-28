@@ -1,4 +1,5 @@
 export type ProjectScreenshot = {
+  kind?: "board";
   src: string;
   alt: string;
   caption: string;
@@ -18,7 +19,11 @@ export type Project = {
   tech: string[];
   href: string;
   linkLabel: string;
-  banner: "driving" | "graduation" | "baseleal";
+  banner: "driving" | "graduation" | "baseleal" | "berea";
+  featured?: boolean;
+  downloads?: { href: string; label: string }[];
+  note?: string;
+  contributionLabel?: string;
   screenshots?: ProjectScreenshot[];
   challenge: string;
   approach: string;
@@ -28,8 +33,76 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "driving-school-management",
+    slug: "berea",
     number: "01",
+    title: "Berea Community Library",
+    category: "Library platform",
+    summary:
+      "A community library connecting open book discovery, member borrowing, and the administrative work that keeps the collection moving.",
+    role: "Full-stack development",
+    context: "Berea community library",
+    platform: "Responsive web application",
+    tech: ["React", "TypeScript", "Laravel", "Turso"],
+    href: "https://beriabooks.vercel.app",
+    linkLabel: "Explore the library",
+    banner: "berea",
+    featured: true,
+    contributionLabel: "Implementation",
+    downloads: [
+      { href: "/downloads/Berea-Case-Study.pdf", label: "Download case-study PDF" },
+      { href: "/downloads/Berea-Portfolio-Pack.zip", label: "Download full pack · 7.4 MB" },
+    ],
+    note: "All member records shown are fictional. The presentation uses captures of the working application with an isolated API and database; no production member records were used or modified.",
+    screenshots: [
+      {
+        kind: "board",
+        src: "/images/projects/berea/01-cover.png",
+        alt: "Berea community library presentation showing the public book catalogue on desktop and member loans on mobile",
+        caption: "A full-stack library experience: public discovery, member borrowing, and library administration.",
+        width: 3200,
+        height: 2000,
+      },
+      {
+        kind: "board",
+        src: "/images/projects/berea/02-reader-journey.png",
+        alt: "Reader journey from discovering books and creating an account to requesting a loan and following its status",
+        caption: "The reader journey — browse freely, join the library, request a book, and follow loans and decisions in one place.",
+        width: 3200,
+        height: 2000,
+      },
+      {
+        kind: "board",
+        src: "/images/projects/berea/03-library-administration.png",
+        alt: "Berea administration screens showing library management, a loan request queue, and approval workflow",
+        caption: "Library administration — review requests, approve checkouts with due dates, and record returns to make copies available again.",
+        width: 3200,
+        height: 2000,
+      },
+      {
+        kind: "board",
+        src: "/images/projects/berea/04-brand-and-themes.png",
+        alt: "Berea brand treatment and responsive catalogue screens in light and dark themes",
+        caption: "Brand and themes — the supplied Berea identity carried across desktop, mobile, light, and dark interfaces.",
+        width: 3200,
+        height: 2000,
+      },
+    ],
+    challenge:
+      "The existing library interface centered on managing books and members. Visitors also needed a way to explore the collection, while readers needed accounts and a clear way to ask for a loan. Administrators still needed control over availability, approvals, checkouts, and returns.",
+    approach:
+      "The React and TypeScript frontend connects public browsing, member accounts, and a protected admin workspace to a Laravel API backed by Turso. Search, categories, availability, and book details stay open to visitors. Registration and sign-in preserve the book a reader wanted to borrow, while backend authorization and availability rules support the same permissions shown in the interface.",
+    capabilities: [
+      { title: "Discover before signing in", description: "An open catalogue with search, category and availability filters, and book details lets visitors find a book before creating an account." },
+      { title: "Borrow with a clear next step", description: "Members can request or cancel a loan, then follow decisions, active loans, and due dates in their own account. A pending request does not reserve a copy." },
+      { title: "Connect requests to circulation", description: "Administrators review requests in a dedicated queue. Approval creates the checkout and due date; a recorded return restores availability." },
+      { title: "Carry the identity across devices", description: "Responsive screens and light and dark themes apply the supplied Berea brand to public, member, and admin interfaces." },
+    ],
+    delivery:
+      "A connected library application with a public catalogue, member registration and sign-in, loan requests and cancellation, personal loan history, and role-based administration for reviews, checkouts, and returns. The frontend is hosted on Vercel, with a separate Laravel API on Render connected to Turso.",
+  },
+  {
+    slug: "driving-school-management",
+    number: "02",
     title: "Driving School Management System",
     category: "Business software",
     summary:
@@ -41,6 +114,7 @@ export const projects: Project[] = [
     href: "https://dms.arkhivetech.io/",
     linkLabel: "Visit platform",
     banner: "driving",
+    featured: true,
     screenshots: [
       {
         src: "/images/projects/driving-school-home.png",
@@ -64,7 +138,7 @@ export const projects: Project[] = [
   },
   {
     slug: "graduation-book",
-    number: "02",
+    number: "03",
     title: "Graduation Book — AASTU ECSF",
     category: "Community platform",
     summary:
@@ -106,7 +180,7 @@ export const projects: Project[] = [
   },
   {
     slug: "baseleal",
-    number: "03",
+    number: "04",
     title: "Baseleal",
     category: "Mobile application",
     summary:
@@ -139,12 +213,5 @@ export const additionalProjects = [
     description: "Order and withdrawal handling for a coffee house’s day-to-day operations.",
     tech: ["Vue.js", "Nuxt.js", "Drizzle"],
     href: "https://github.com/HabibElias/amcoffee-ms",
-  },
-  {
-    title: "Beria Book & Customer Management",
-    category: "Records & inventory",
-    description: "Book withdrawals, member records, and inventory tracking in a church management application.",
-    tech: ["React", "Laravel", "PHP"],
-    href: "https://github.com/HabibElias/Beria-cms",
   },
 ];

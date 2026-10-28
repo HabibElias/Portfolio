@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Download } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { projects } from "../data/projects";
 import ProjectBanner from "../components/ProjectBanner";
@@ -33,18 +33,28 @@ export default function CaseStudyPage() {
         <p className="text-xs uppercase tracking-widest text-muted-foreground mb-5">Case study {project.number} / {project.category}</p>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight max-w-4xl leading-[1.08]">{project.title}</h1>
         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mt-6 max-w-3xl">{project.summary}</p>
-        <a href={project.href} target="_blank" rel="noopener noreferrer" className="case-study-link mt-8">{project.linkLabel}<ArrowUpRight size={17} aria-hidden="true" /></a>
+        <div className="flex flex-wrap items-start gap-x-8 gap-y-5 mt-8">
+          <a href={project.href} target="_blank" rel="noopener noreferrer" className="case-study-link">{project.linkLabel}<ArrowUpRight size={17} aria-hidden="true" /></a>
+          {project.downloads?.map((download) => (
+            <a key={download.href} href={download.href} download className="case-study-link">{download.label}<Download size={16} aria-hidden="true" /></a>
+          ))}
+        </div>
         <dl className="grid sm:grid-cols-3 gap-6 border-t border-border pt-8 mt-12 mb-12">
           {[["My role", project.role], ["Context", project.context], ["Platform", project.platform]].map(([label, value]) => (
             <div key={label}><dt className="text-xs uppercase tracking-widest text-muted-foreground mb-3">{label}</dt><dd className="text-sm leading-relaxed">{value}</dd></div>
           ))}
         </dl>
         <ProjectBanner project={project} className="case-study-banner rounded-2xl" />
+        {project.note && <p className="text-xs text-muted-foreground leading-relaxed mt-5 max-w-3xl">{project.note}</p>}
         {!!project.screenshots?.slice(1).length && (
-          <section aria-label="Project screenshots" className="mt-12 space-y-8">
+          <section aria-label="Project screenshots" className="mt-12 space-y-10">
             {project.screenshots.slice(1).map((screenshot) => (
               <figure key={screenshot.src}>
-                <BrowserPreview screenshot={screenshot} hostname={new URL(project.href).hostname} />
+                {screenshot.kind === "board" ? (
+                  <a href={screenshot.src} target="_blank" rel="noopener noreferrer" className="presentation-board-link" aria-label={`Open full-size board: ${screenshot.caption}`}>
+                    <img src={screenshot.src} alt={screenshot.alt} width={screenshot.width} height={screenshot.height} loading="lazy" decoding="async" className="presentation-board" />
+                  </a>
+                ) : <BrowserPreview screenshot={screenshot} hostname={new URL(project.href).hostname} />}
                 <figcaption className="text-sm text-muted-foreground leading-relaxed mt-4">{screenshot.caption}</figcaption>
               </figure>
             ))}
@@ -58,7 +68,7 @@ export default function CaseStudyPage() {
           <p>{project.challenge}</p>
         </div>
         <div className="case-study-section">
-          <h2><span>02</span>My contribution</h2>
+          <h2><span>02</span>{project.contributionLabel ?? "My contribution"}</h2>
           <div>
             <p>{project.approach}</p>
             <div className="flex flex-wrap gap-2 mt-6">{project.tech.map((tech) => <span key={tech} className="rounded-full border border-border px-3 py-1 text-xs">{tech}</span>)}</div>

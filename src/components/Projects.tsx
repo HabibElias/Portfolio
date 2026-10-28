@@ -12,12 +12,12 @@ export default function Projects() {
             <h2 className="text-sm font-medium tracking-widest uppercase text-muted-foreground mb-4">Selected work</h2>
             <p className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">Built for people.<br /><span className="text-muted-foreground">Grounded in purpose.</span></p>
           </div>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">A closer look at the problems, contributions, and technology behind three web and mobile projects.</p>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">A closer look at the problems, contributions, and technology behind selected web and mobile projects.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-7">
-          {projects.map((project, i) => (
-            <article key={project.slug} className={`case-card group ${i === 0 ? "md:col-span-2 case-card--featured" : ""}`}>
+          {projects.map((project) => (
+            <article key={project.slug} className={`case-card group ${project.featured ? "md:col-span-2 case-card--featured" : ""}`}>
               <Link to={`/projects/${project.slug}`} className="case-card-visual" aria-label={`Read ${project.title} case study`}>
                 <ProjectBanner project={project} />
               </Link>
